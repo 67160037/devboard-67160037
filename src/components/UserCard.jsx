@@ -1,9 +1,16 @@
 function UserCard({ name, email }) {
-  // ดึงตัวอักษรแรกมาทำ avatar
   const initials = name
     .split(" ")
     .map((n) => n[0])
     .join("");
+
+  //⭐⭐ ระดับ 2 — Avatar หลากสี
+  const charCode = name.charCodeAt(0);
+  const colorIndex = charCode % 3;
+
+  let avatarColor = "#1e40af"; // สีเริ่มต้น
+  if (colorIndex === 1) avatarColor = "#059669"; // สีเขียว
+  if (colorIndex === 2) avatarColor = "#7c3aed"; // สีม่วง
 
   return (
     <div
@@ -22,7 +29,7 @@ function UserCard({ name, email }) {
         style={{
           width: "40px",
           height: "40px",
-          background: "#1e40af",
+          background: avatarColor, // เปลี่ยนตรงนี้ให้ใช้ตัวแปร avatarColor
           color: "white",
           borderRadius: "50%",
           display: "flex",

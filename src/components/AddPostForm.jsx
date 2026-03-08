@@ -3,6 +3,7 @@ import { useState } from "react";
 function AddPostForm({ onAddPost }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const MAX_TITLE = 100; // ⭐ Challenge ระดับ 1(2) Character Counter: จำกัด 100 ตัว
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,6 +33,7 @@ function AddPostForm({ onAddPost }) {
         type="text"
         placeholder="หัวข้อโพสต์"
         value={title}
+        maxLength={MAX_TITLE}
         onChange={(e) => setTitle(e.target.value)}
         style={{
           width: "100%",
@@ -43,6 +45,18 @@ function AddPostForm({ onAddPost }) {
           boxSizing: "border-box",
         }}
       />
+
+      {/* ⭐ Challenge ระดับ 1(2) Character Counter: ตัวนับเปลี่ยนสีเป็นแดงเมื่อเหลือน้อยกว่า 10 ตัว */}
+      <div
+        style={{
+          textAlign: "right",
+          fontSize: "0.8rem",
+          color: MAX_TITLE - title.length <= 10 ? "#e53e3e" : "#718096",
+          marginBottom: "0.75rem",
+        }}
+      >
+        {title.length}/{MAX_TITLE}
+      </div>
 
       <textarea
         placeholder="เนื้อหาโพสต์"

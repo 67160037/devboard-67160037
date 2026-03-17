@@ -27,6 +27,7 @@ function CommentList({ postId }) {
 
   if (loading)
     return <p style={{ color: "#718096" }}>กำลังโหลดความคิดเห็น...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p style={{ color: "#c53030" }}>{error}</p>;
 
   return (

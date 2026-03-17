@@ -61,7 +61,6 @@ function PostList({ favorites, onToggleFavorite }) {
       >
         โพสต์ล่าสุด
       </h2>
-      {loading && <LoadingSpinner />}
 
       {/* 2. แสดงจำนวนโพสต์ทั้งหมด (Challenge Task 1) */}
       <PostCount count={posts.length} />
@@ -94,12 +93,7 @@ function PostList({ favorites, onToggleFavorite }) {
 
       {/* แสดงรายการโพสต์ */}
       {filtered.map((post) => (
-        <PostCard
-          key={post.id}
-          post={post}
-          isFavorite={favorites.includes(post.id)}
-          onToggleFavorite={() => onToggleFavorite(post.id)}
-        />
+        <PostCard key={post.id} post={post} />
       ))}
     </div>
   );
